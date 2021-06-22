@@ -1,0 +1,147 @@
+<!doctype html>
+<title>PFFS</title>
+<html class="fixed">
+	<head>
+
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<meta name="theme-color" content="#ffffff"/>
+		<link rel="icon" href="assets/images/apple-touch-icon-iphone-60x60.png">
+
+		<link rel="apple-touch-icon" href="assets/images/apple-touch-icon-iphone-60x60.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-touch-icon-ipad-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-iphone-retina-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-touch-icon-ipad-retina-152x152.png">
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme-custom.css">
+
+		<!-- Head Libs -->
+		<script src="assets/vendor/modernizr/modernizr.js"></script>
+		<link rel="manifest" href="manifest.webmanifest">
+		<script type="text/javascript">
+			if ( "serviceWorker" in navigator ) {
+			  navigator.serviceWorker.register( "sw.js" )
+				.then( function ( registration ) { 
+				  console.log( "ServiceWorker registration successful with scope: ", registration.scope );
+			
+				} ).catch( function ( err ) { 
+			
+				  console.error( "ServiceWorker registration failed: ", err );
+				} );
+			
+			}
+		 </script>
+		
+		
+	</head>
+	<body>
+		<!-- start: page -->
+		<section class="body-sign">
+			<div class="center-sign">
+				<a href="." class="logo pull-left">
+					<img src="assets/images/PWA.png" height="54" alt="Porto Admin" />
+				</a>
+
+				<div class="panel panel-sign">
+					<div class="panel-title-sign mt-xl text-right">
+						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign Up</h2>
+					</div>
+					<div class="panel-body">
+                    <form name="registration_form" method="post" action="register.php" >
+							<div class="form-group mb-lg">
+								<label>Name</label>
+								<input name="name" type="text" class="form-control input-lg" required/>
+							</div>
+
+							<div class="form-group mb-lg">
+								<label>E-mail Address</label>
+								<!-- <input name="email" type="email" class="form-control input-lg" required/> -->
+								<input name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" class="form-control input-lg" required/>
+
+							</div>
+							<div class="form-group mb-lg">
+								<label> National Identification Number</label>
+								<input name="ic" type="text" class="form-control input-lg" placeholder="Example: 990000011111" pattern="[0-9]{11}" title="Wrong NIN number format!" required/>
+							</div>
+                            <div class="form-group mb-lg">
+								<label>Telephone</label>
+								<input name="telephone" type="number" class="form-control input-lg" required/>
+							</div>
+
+                          
+
+							<div class="form-group mb-none">
+								<div class="row">
+									<div class="col-sm-6 mb-lg">
+										<label>Password</label>
+                                        
+										<input id="password" name="password" type="password" class="form-control input-lg" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onkeyup='check_pass();' data-toggle="tooltip"/>
+									</div>
+									<div class="col-sm-6 mb-lg">
+										<label>Password Confirmation</label>
+										<input id="password_confirm" name="password_confirm" type="password" class="form-control input-lg" required onkeyup='check_pass();'/>
+                                        <script>
+                                           function check_pass() {
+                                                if (document.getElementById('password').value ==
+                                                        document.getElementById('password_confirm').value) {
+                                                    document.getElementById('submit').disabled = false;
+                                                    document.getElementById('submit2').disabled = false;
+                                                } else {
+                                                    document.getElementById('submit').disabled = true;
+                                                    document.getElementById('submit2').disabled = true;
+                                                }
+                                            }
+                                            </script>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-8">
+									
+								</div>
+								<div class="col-sm-4 text-right">
+									<button type="submit" class="btn btn-primary hidden-xs" name="submit"  value="registration"  id="submit" disabled>Sign Up</button>
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" name="submit"  value="registration"  id="submit2" disabled>Sign Up</button>
+                                </div>
+							</div>
+
+							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
+								<span>or</span>
+							</span>
+
+
+							<p class="text-center">Already have an account? <a href="signin.php">Sign In!</a>
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- end: page -->
+		
+		<script>
+			$(document).ready(function(){
+			  $('[data-toggle="tooltip"]').tooltip();   
+			});
+			</script>
+	</body>
+</html>

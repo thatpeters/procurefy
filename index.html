@@ -1,0 +1,108 @@
+<!doctype html>
+<title>PSSF</title>
+
+<html class="fixed">
+	<head>
+		<link rel="icon" href="assets/images/apple-touch-icon-iphone-60x60.png">
+
+		<link rel="apple-touch-icon" href="assets/images/apple-touch-icon-iphone-60x60.png">
+<link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-touch-icon-ipad-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-iphone-retina-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-touch-icon-ipad-retina-152x152.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <script type="text/javascript">
+      if ( "serviceWorker" in navigator ) {
+        navigator.serviceWorker.register( "sw.js" )
+          .then( function ( registration ) { 
+            console.log( "ServiceWorker registration successful with scope: ", registration.scope );
+      
+          } ).catch( function ( err ) { 
+      
+            console.error( "ServiceWorker registration failed: ", err );
+          } );
+      
+      }
+   </script>
+		<!-- Basic -->
+		<meta charset="UTF-8">
+		<meta name="theme-color" content="#ffffff"/>
+
+
+		
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css" defer>
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" defer>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" defer>
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme.css"/>
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/skins/default.css"/>
+
+
+
+	</head>
+	<body>
+		<!-- start: page -->
+		<section class="body-error error-outside">
+			<div class="center-error">
+
+				<div class="row">
+					<div class="col-sm-8">
+						<div class="main-error mb-xlg">
+              <h2 class="error-code text-dark text-center text-semibold m-none">PSSF <i class="fa fa-cubes"></i></h2>
+							<p class="error-explanation text-center">Public Facility Feedback System</p>
+
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<h4 class="text">Please proceed to login.</h4>
+						
+            <input type="button" class="btn btn-primary hidden-xs" value="Login" onclick="window.location='signin.php';" /> 
+			<input type="button" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" value="Login" onclick="window.location='signin.php';" />
+			
+			<hr class="separator" />
+
+			<input type="button" class="btn btn-primary hidden-xs" value="About Us" onclick="window.location='about.html';" /> 
+            <input type="button" class="btn btn-primary btn-block btn-lg visible-xs mt-lg" value="About Us" onclick="window.location='about.html';" /> 
+												</div>
+				</div>
+			</div>
+		</section>
+		<!-- end: page -->
+
+<script>
+window.onload = function() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  navigator.serviceWorker.register('sw.js');
+Notification.requestPermission(function(result) {
+  if (result === 'granted') {
+    navigator.serviceWorker.ready.then(function(registration) {
+  const options = {
+    icon: 'assets/images/apple-touch-icon-ipad-retina-152x152.png',
+	silent: true
+
+  };
+      registration.showNotification('Welcome to PSSF!', options);
+    });
+  }
+});
+
+  // At last, if the user has denied notifications, and you 
+  // want to be respectful there is no need to bother them any more.
+}
+</script>
+	
+	</body>
+</html>

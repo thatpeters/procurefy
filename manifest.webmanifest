@@ -1,0 +1,27 @@
+{
+    "short_name": "PSSF",
+    "name": "Public Facility Feedback System",
+    "theme_color": "#ffffff",
+    "description": "The bridge between citizens and government.",
+    "icons": [
+      {
+        "src": "assets/images/PWA1.png",
+        "type": "image/png",
+        "sizes": "192x192",
+        "purpose": "any maskable"
+
+        
+      },
+      {
+        "src": "assets/images/PWA.png",
+        "type": "image/png",
+        "sizes": "512x512",
+        "purpose": "any maskable"
+
+        
+      }
+    ],
+    "start_url": "index.html",
+    "background_color": "#ffffff",
+    "display": "standalone"
+  }
