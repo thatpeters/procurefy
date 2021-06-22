@@ -1,0 +1,105 @@
+</section>
+</div>
+
+
+</section>
+
+<!-- Vendor -->
+<script src="../assets/vendor/jquery/jquery.js"></script>
+<script src="../assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/nanoscroller/nanoscroller.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="../assets/vendor/magnific-popup/magnific-popup.js"></script>
+<script src="../assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+<!-- Specific Page Vendor -->
+<script src="../assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+<script src="../assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+<script src="../assets/vendor/jquery-appear/jquery.appear.js"></script>
+<script src="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<script src="../assets/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
+
+<script src="../assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="../assets/vendor/raphael/raphael.js"></script>
+<script src="../assets/vendor/morris/morris.js"></script>
+<script src="../assets/vendor/gauge/gauge.js"></script>
+<script src="../assets/vendor/snap-svg/snap.svg.js"></script>
+<script src="../assets/vendor/liquid-meter/liquid.meter.js"></script>
+
+
+<!-- Theme Base, Components and Settings -->
+<script src="../assets/javascripts/theme.js"></script>
+
+<!-- Theme Custom -->
+<script src="../assets/javascripts/theme.custom.js"></script>
+
+<!-- Theme Initialization Files -->
+<script src="../assets/javascripts/theme.init.js"></script>
+
+<!-- Specific Page Vendor -->
+<script src="../assets/vendor/pnotify/pnotify.custom.js"></script>
+
+<!-- EXAMPLE -->
+<script src="../assets/javascripts/ui-elements/examples.modals.js"></script>
+<script src="../assets/javascripts/pages/examples.mediagallery.js"></script>
+
+
+
+<script>
+  var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+  };
+
+  function success(pos) {
+      var crd = pos.coords;
+      window.location = 'nearby_post.php?latitude=' + crd.latitude + '&longitude=' + crd.longitude;
+
+
+   
+  }
+
+  function error(err) {
+
+      alert(`ERROR(${err.code}): ${err.message}`);
+
+  }
+
+  function find_current_location() {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+  }
+
+
+  function handlePermission() {
+navigator.permissions.query({name:'geolocation'}).then(function(result) {
+  if (result.state == 'granted') {
+    var reminder_location = document.getElementById("reminder_location");
+    if(reminder_location){
+      reminder_location.style.display = 'none';
+  }
+    
+    
+    
+    
+  } 
+});
+}
+
+function revokePermission() {
+navigator.permissions.revoke({name:'geolocation'}).then(function(result) {
+  report(result.state);
+});
+}
+
+function report(state) {
+console.log('Permission: ' + state);
+}
+
+handlePermission();
+</script>
+
+
+</body>
+</html>
